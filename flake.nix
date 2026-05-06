@@ -2,9 +2,9 @@
 {
   description = "Workout & nutrition tracker — NixOS module";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  #inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  outputs = { self, nixpkgs }:
+  outputs = { self,}:
   let
     workoutModule = { config, pkgs, lib, ... }:
     with lib;
@@ -38,7 +38,6 @@
           example = "workout.nixos";
           description = "Virtualhost nginx dédié à l'app.";
         };
-      };
 
         forceSSL = mkOption {
           type    = types.bool;
@@ -49,6 +48,7 @@
           type    = types.bool;
           default = true;
         };
+      };
 
       config = mkIf cfg.enable {
 
