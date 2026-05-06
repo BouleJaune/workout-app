@@ -80,10 +80,10 @@
         };
 
         services.nginx.virtualHosts.${cfg.nginxVhost} = {
+          forceSSL = cfg.forceSSL;
+          enableACME = cfg.enableACME;
           locations."/" = {
             proxyPass = "http://127.0.0.1:${toString cfg.port}";
-            forceSSL = cfg.forceSSL;
-            enableACME = cfg.enableACME;
             extraConfig = ''
               proxy_set_header Host              $host;
               proxy_set_header X-Real-IP         $remote_addr;
